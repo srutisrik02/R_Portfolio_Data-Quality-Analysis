@@ -24,7 +24,7 @@ This project demonstrates analysis and visualisation of stimulated field survey 
 3. Figures
 
 ## Example Visualisation
-![Bar Graph]("D:\RPrograming\Github file\Charts\crt_p3_daily_submissions_flags.png")
+![Bar Graph](crt_p1_flag_rate_by_enumerator.png)
 
 ##Author
 Srutisri Kalyana Sundaram
