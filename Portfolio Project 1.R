@@ -71,11 +71,6 @@ duration_min > 30 ~ "LONG",
 TRUE              ~ "OK"
 )
 ) |>
-filter(duration_flag != "OK") |>
-select(submission_id, enumerator_id, route_id,
-interview_date, duration_min, duration_flag)
-cat("Duration anomalies flagged:", nrow(duration_flags), "submissions")
-print(duration_flags)
 consistency_flags <- survey_data |>
 mutate(
 consistency_flag = case_when(
