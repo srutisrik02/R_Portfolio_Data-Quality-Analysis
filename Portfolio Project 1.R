@@ -50,19 +50,7 @@ flag = ifelse(missing_pct > 10, "FLAG", "OK")
 ) |>
 arrange(desc(missing_pct))
 print(missing_data)
-duration_flags <- survey_data |>
-mutate(
-duration_flag = case_when(
-duration_min < 5  ~ "TOO SHORT — possible fabrication",
-duration_min > 30 ~ "TOO LONG — possible interruption or error",
-TRUE              ~ "OK"
-)
-) |>
-filter(duration_flag != "OK") |>
-select(submission_id, enumerator_id, route_id,
-interview_date, duration_min, duration_flag)
-cat("Duration anomalies flagged:", nrow(duration_flags), "submissions")
-print(duration_flags)
+
 duration_flags <- survey_data |>
 mutate(
 duration_flag = case_when(
@@ -71,6 +59,12 @@ duration_min > 30 ~ "LONG",
 TRUE              ~ "OK"
 )
 ) |>
+filter(duration_flag != "OK") |>
+select(submission_id, enumerator_id, route_id,
+interview_date, duration_min, duration_flag)
+cat("Duration anomalies flagged:", nrow(duration_flags), "submissions")
+print(duration_flags)
+
 consistency_flags <- survey_data |>
 mutate(
 consistency_flag = case_when(
